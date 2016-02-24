@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="tienda" lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-controller="tiendaCodejobs as latienda">
+
+	<div ng-repeat="product in latienda.products | limitTo:2">
+	<h1>{{ product.name}}</h1>
+	<h2>${{ product.price}}</h2>
+	<p> {{ product.description }} </p>
+	<button ng-show="product.canPurchase">Comprar</button>
+	<ul>
+		<h4>Comentarios</h4>
+		<li ng-repeat="review in product.reviews">
+				<blockquote>
+					<b>Stars: {{ review.stars }}</b>
+					<b>{{ review.body }}</b>
+					<cite>by: {{ review.author }}</cite>
+				</blockquote>
+
+		</li>
+	</ul>
+
+	            <form name="reviewForm">
+              <!--  Vista en vivo -->
+              	<ul>
+              		<li>
+		              <blockquote>
+		                <strong>Stars: {{review.stars}} </strong><br>
+		                {{review.body}}<br>
+		                <cite>-{{review.author}}</cite>
+		              </blockquote>
+	              </li>
+	            </ul>
+
+              <h4>Enviar un comentario</h4>
+              <fieldset>
+                <select ng-model="review.stars" ng-options="stars for stars in [5,4,3,2,1]"  title="Stars">
+                  <option value="">Rango del curso</option>
+                </select>
+              </fieldset>
+
+              <fieldset class="form-group">
+                <textarea ng-model="review.body" placeholder="Escribe un comentario sobre el curso" title="Review"></textarea>
+              </fieldset>
+
+              <fieldset>
+                <input ng-model="review.author" type="email" placeholder="ejemplo@ejemplo.com" title="Email" />
+              </fieldset>
+
+              <fieldset>
+                <input type="submit" value="Enviar comentario" />
+              </fieldset>
+            </form>
+
+
+
+
+	</div>
+
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+	<script type="text/javascript" src="lib/app.js"></script>
+</body>
+</html>

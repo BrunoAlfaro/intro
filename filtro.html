@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" ng-app ng-controller="AppCtl">
+	<head>
+		<meta charset="utf-8">
+		<title>Contact Manager</title>
+		<script type="text/javascript" src="lib/controller.js"></script>
+	</head>
+	<body>
+		<label>Buscar:</label>
+		<br>
+		<input type="text" ng-model="search">
+ 
+		<ul>
+		    <li ng-repeat="contact in contacts | filter:search">
+		        {{contact.name}} - {{contact.phone}} - {{contact.email}}
+		    </li>
+		</ul>
+ 
+	</body>
+	<script type="text/javascript" src="lib/angular.min.js"></script>
+</html>
